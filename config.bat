@@ -34,6 +34,11 @@ cd /d "C:\Program Files\NICE\DCV\server\bin"
 dcv.exe close-session console 2>nul
 dcv.exe close-session my-session 2>nul
 dcv.exe create-session my-session --owner %USERNAME%
+if errorlevel 1 (
+  echo Failed to create DCV session!
+  pause
+  exit /b 1
+)
 
 :: Download NGINX
 echo [*] Downloading NGINX...
