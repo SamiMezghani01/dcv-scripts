@@ -121,3 +121,4 @@ cd /d "%NGINX_DIR%"
 start nginx.exe
 
 echo [✓] Setup completed successfully.
+pause
