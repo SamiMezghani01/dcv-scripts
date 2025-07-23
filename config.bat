@@ -34,7 +34,11 @@ echo [*] Creating DCV session...
 "C:\Program Files\NICE\DCV\Server\bin\dcv.exe" close-session console 2>nul
 "C:\Program Files\NICE\DCV\Server\bin\dcv.exe" close-session my-session 2>nul
 
-"C:\Program Files\NICE\DCV\Server\bin\dcv.exe" create-session my-session --owner %USERNAME%
+:: Dynamically resolve the actual logged-in username
+for /f %%u in ('powershell -Command "(Get-WmiObject Win32_ComputerSystem).UserName.Split('\\')[1]"') do set "REALUSER=%%u"
+
+:: Use the resolved user as owner
+"C:\Program Files\NICE\DCV\Server\bin\dcv.exe" create-session my-session --owner %REALUSER%
 if errorlevel 1 (
   echo Failed to create DCV session!
   pause
