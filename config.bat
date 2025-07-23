@@ -38,7 +38,7 @@ echo [*] Creating DCV session...
 for /f %%u in ('powershell -Command "(Get-WmiObject Win32_ComputerSystem).UserName.Split('\\')[1]"') do set "REALUSER=%%u"
 
 :: Use the resolved user as owner
-"C:\Program Files\NICE\DCV\Server\bin\dcv.exe" create-session my-session --owner %REALUSER%
+"C:\Program Files\NICE\DCV\Server\bin\dcv.exe" create-session my-session --owner gameadmin
 if errorlevel 1 (
   echo Failed to create DCV session!
   pause
