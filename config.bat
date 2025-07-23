@@ -34,7 +34,7 @@ echo [*] Creating DCV session...
 "C:\Program Files\NICE\DCV\Server\bin\dcv.exe" close-session console 2>nul
 "C:\Program Files\NICE\DCV\Server\bin\dcv.exe" close-session my-session 2>nul
 
-"C:\Program Files\NICE\DCV\Server\bin\dcv.exe" create-session my-session --owner "%USERNAME%"
+"C:\Program Files\NICE\DCV\Server\bin\dcv.exe" create-session my-session --owner %USERNAME%
 if errorlevel 1 (
   echo Failed to create DCV session!
   pause
